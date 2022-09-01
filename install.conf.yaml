@@ -5,21 +5,28 @@
       force: true
       use_glob: true
 
-        #- clean: ["~"]
-
 - shell:
     - command: test -d ~/.oh-my-zsh || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      description: Installing ohmyzsh
+      description: Install ohmyzsh
 
     - command: which brew || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      description: Installing homebrew
+      description: Install homebrew
 
     - command: brew bundle --file brew/Brewfile
-      description: Installing brew packages
+      description: Install brew packages
+      stdin: true
       stdout: true
 
-    - command: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
-      description: Installing Zsh theme
+    - command: GIT_PATH=~/.oh-my-zsh/custom/themes/powerlevel10k && (git -C $GIT_PATH status || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $GIT_PATH)
+      description: Install Zsh theme
+    
+    - command: ls ~/.ssh/id_rsa || ssh-keygen -o -t rsa -C "$HOST" -f "~/.ssh/id_rsa"
+      description: Provision ssh key
+      stdin: true
+      stdout: true
+
+    - command: GIT_PATH=~/.config/kitty/themes && (git -C $GIT_PATH status || git clone --depth=1 https://github.com/dexpota/kitty-themes.git $GIT_PATH)
+      description: Install Kitty themes
     
 - link:
     ~/.gitconfig: git/.gitconfig

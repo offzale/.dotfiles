@@ -1,11 +1,10 @@
+[include]
+    path = ~/.gitconfig.local
 [user]
     email      = goga.enrique@gmail.com
     name       = Enrique Gonzalez
-    signingkey = F7ED39E3FC6428AC805C7F464A199487BA81AFF5
 [alias]
     hist = log --graph --date-order --date=short --pretty=format:'%C(auto)%h%d %C(reset)%s %C(bold blue)%ce %C(reset)%C(green)%cr (%cd)'
-[commit]
-    gpgsign = true
 [core]
     attributesfile = ~/.gitattributes.global
     editor         = vim

@@ -51,7 +51,12 @@ source $ZSH/oh-my-zsh.sh
 # Conflicts with 'ksd' binary
 unalias ksd
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+alias clone='clone-in-kitty'
+alias dotfiles='git -C ~/.dotfiles'
+alias kcx=kubectx
+alias ns=kubens
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[ ! -f ~/.p10k.zsh ] || source ~/.p10k.zsh
+
+[ ! -f ~/.fzf.zsh ] || source ~/.fzf.zsh
